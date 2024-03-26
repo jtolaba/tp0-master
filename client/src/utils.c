@@ -32,8 +32,7 @@ int crear_conexion(char *ip, char* puerto)
 	int socket_cliente = 0;
 
 	// Ahora que tenemos el socket, vamos a conectarlo
-
-
+	
 	freeaddrinfo(server_info);
 
 	return socket_cliente;
