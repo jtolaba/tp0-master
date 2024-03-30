@@ -42,7 +42,10 @@ int main(void)
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
 
+	enviar_mensaje(valor, conexion);	
+	
 	// Armamos y enviamos el paquete
+	
 	paquete(conexion);
 
 	terminar_programa(conexion, logger, config);
@@ -93,7 +96,6 @@ void paquete(int conexion)
 	t_paquete* paquete;
 
 	// Leemos y esta vez agregamos las lineas al paquete
-
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	
