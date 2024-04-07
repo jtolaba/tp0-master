@@ -17,17 +17,15 @@ int iniciar_servidor(void)
 	getaddrinfo(NULL, PUERTO, &hints, &servinfo);
 
 	// Creamos el socket de escucha del servidor
+
 	int socket_servidor= socket(servinfo->ai_family,
 								servinfo->ai_socktype,
 								servinfo->ai_protocol);
+
 	// Asociamos el socket a un puerto
-	if (bind(socket_servidor,servinfo->ai_addr,servinfo->ai_addrlen)>=0)
-	{
-		log_info(logger, "BIND() = OK");
-	}else{
-		log_info(logger, "BIND() = FAILURE");
-	}
-	
+
+	bind(socket_servidor,servinfo->ai_addr,servinfo->ai_addrlen);
+
 	// Escuchamos las conexiones entrantes
 	listen(socket_servidor,SOMAXCONN);
 	freeaddrinfo(servinfo);
@@ -37,7 +35,6 @@ int iniciar_servidor(void)
 		log_info(logger, "Error al crear el servidor");
 	}
 		
-
 	return socket_servidor;
 }
 
@@ -47,9 +44,8 @@ int esperar_cliente(int socket_servidor)
 	//assert(!"no implementado!");
 
 	// Aceptamos un nuevo cliente
-	int socket_cliente = accept(socket_servidor,NULL,NULL);
+	int socket_cliente = accept(socket_servidor,NULL,NULL);	
 	log_info(logger, "Se conecto un cliente!");
-
 	return socket_cliente;
 }
 
